@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+	<head>	
+		<meta charset="UTF-8">  <!-- Permite poder agregar caracteres especiales como la " ñ " -->
+			<title>.: Help-Desk :.</title>
+			<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+			<link rel="stylesheet" href="assets/css/bootstrap-responsive.min.css">
+			<script src="assets/js/jquery.js"></script>
+			<script src="assets/js/bootstrap.js"></script>
+			<style type="text/css">
+				.fondo{
+					background :url('img/compusoluciones.jpg') no-repeat;
+					 
+				}
+				
+			</style>
+
+	</head>
+	<body>
+
+		<script type="text/javascript">
+		
+			//Verificamos que todos los campos esten llenos
+			function verificar () 
+				 {
+					
+					//alert('Entro a la funcion');
+					//Verificar que el campo usuario contenga algun valor
+					if ( document.getElementById('user').value == 0 ) 
+						{
+							//Si no contiene ningun valor arroja este mensaje
+							alert( "Introduce tu Usuario" );
+							return false;
+						};
+
+					//Verificar que el campo contraseña tenga algun valor
+					if ( document.getElementById('pass').value == 0) 
+						{
+							//Si no contiene ningun valor arroja este mensaje
+							alert( "Introduce tu Password" );
+							return false;
+						};
+
+						// Si los campos estan llenos procedemos a enviar el formulario
+						document.form.submit();
+				}
+
+		</script>
+
+
+		<center>
+
+		<div class="modal hide fade in" data-backdrop="true" data-keyboard="false">
+			<div class="modal-header" style="background: peru; color: white;">
+				<h3>Login</h3>
+			</div>
+			<div id="welcome" class="modal-body fondo">
+				<div>
+					<h1>Bienvenido a</h1>
+					<h2>Help Desk</h2>
+				</div>
+			</div>
+			<div id="form" class="modal-body fondo hide">
+				<form name="form"  action="admin/veruser.php" method="POST" class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label" for="inputUsuario">Usuario</label>
+						<div class="controls">
+							<input type="text" id="user" name="usuario" placeholder="Usuario">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="inputPassword">Password</label>
+						<div class="controls">
+							<input type="password" id="pass" name="password" placeholder="Password">
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<button type="submit" onClick="verificar(); return false;" class="btn">Sign in</button>
+						</div>
+					</div>
+				</form>
+					
+			</div>		
+		</div>
+		
+
+	</body>
+
+		<script>
+		$(function(){
+			$(".modal").modal();
+
+			$('.modal').on('hide', function(e){
+				e.preventDefault();
+			})
+
+			setTimeout(function(){
+				$('#welcome').fadeOut('slow', function(){
+					$('#form').fadeIn('slow');
+				})
+			}, 1000)
+		})
+		</script>
+</html>
